@@ -5,16 +5,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TodayComponent } from './components/today/today.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NextDayComponent } from './components/next-days/next-day.component';
+import { ListCitiesComponent } from './components/list-cities/list-cities.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TodayComponent
+    TodayComponent,
+    NextDayComponent,
+    ListCitiesComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

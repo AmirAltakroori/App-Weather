@@ -1,0 +1,7 @@
+<div>
+    <input type="text" #searchBox [(ngModel)]="cityName" (input)="search()">
+</div>>
+
+<ul class="search-result">
+    <li *ngFor="let city of citiesList">{{city.name}}</li>
+</ul>

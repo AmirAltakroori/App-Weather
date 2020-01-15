@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,CAAC,CAAC;EACE,MAAM,EAAE,GAAG;EACX,OAAO,EAAE,GAAG;CACf;;AAED,AACI,MADE,CACF,iBAAiB,CAAC;EACd,SAAS,EAAE,QAAQ;EACnB,KAAK,EAAE,GAAG;CACb",
+    "sources": [
+        "today.component.scss"
+    ],
+    "names": [],
+    "file": "today.component.css"
+}

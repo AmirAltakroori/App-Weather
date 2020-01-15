@@ -12,26 +12,30 @@ export class TodayComponent implements OnInit {
   lon;
   weather;
 
+  listForecastDays: [];
+
   constructor(private weatherDataService: WeatherDataService) { }
 
   ngOnInit() {
 
     this.getLocation();
+    let t = new Date();
+    
   }
 
   getLocation(){
     if ("geolocation" in navigator){
       navigator.geolocation.watchPosition((success)=>{
         this.lat = success.coords.latitude;
-        this.lon = success.coords.longitude;
-
-        this.weatherDataService.getDayWeatherDataByCoordinates(this.lat, this.lon).subscribe(data=>{
-          this.weather = data;
-        });
+        this.lon = success.coords.longitude;      
       })
     }
-    
   }
 
+ setDayWeatherByCo(lat, lon){
+      this.weatherDataService.getDayWeatherDataByCoordinates(this.lat, this.lon).subscribe(data=>{
+          this.weather = data;
+        });
+  }
 
 }

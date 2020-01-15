@@ -1,7 +1,22 @@
-<div class="day-full-details">
+<div class="today">
+    <div class="get-more-details">?</div>
 
+    <div class="main-details">
+        <div calss="city">Hebron
+            <ng-content select=".city-name"></ng-content>
+        </div>
+        <div class="date">20/12/2020
+            <ng-content select=".current-date"></ng-content>
+        </div>
+        <div>
+            <ng-content select=".mini-today-temp"></ng-content>
+            <img>
+        </div>
+        <div>
+            <ng-content select=".maxi-today-temp"></ng-content>
+            <img>
+        </div>
+    </div>
 </div>
 
-<div class="day-small-details">
-
-</div>
+{{lat}} {{lon}}
