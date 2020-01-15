@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { WeatherDataService } from 'src/app/services/weather-data.service';
+
 
 @Component({
   selector: 'app-weather-details',
@@ -7,11 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WeatherDetailsComponent implements OnInit {
 
-  
-
-  constructor() { }
+  weatherData;
+  constructor(private route: ActivatedRoute, private weatherDataService: WeatherDataService ) { }
 
   ngOnInit() {
+    let id = parseInt(this.route.snapshot.paramMap.get('id'));
+    this.weatherData = this.weatherDataService.getDayWeatherDataById(id);
   }
+  
 
 }

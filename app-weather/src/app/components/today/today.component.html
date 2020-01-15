@@ -2,21 +2,15 @@
     <div class="get-more-details">?</div>
 
     <div class="main-details">
-        <div calss="city">Hebron
-            <ng-content select=".city-name"></ng-content>
-        </div>
-        <div class="date">20/12/2020
-            <ng-content select=".current-date"></ng-content>
-        </div>
+        <div calss="city">{{weather.name}}</div>
         <div>
-            <ng-content select=".mini-today-temp"></ng-content>
-            <img>
+            <div class="main-temp">{{weather.main.temp}} °C</div>
+            <img src="http://openweathermap.org/img/wn/{{this.weather.weather[0].icon}}.png">
         </div>
-        <div>
-            <ng-content select=".maxi-today-temp"></ng-content>
-            <img>
-        </div>
+        <div class="status">{{weather.weather[0].main}}</div>
     </div>
 </div>
 
-{{lat}} {{lon}}
+<ul>
+    <div *ngFor="let item of list"></div>
+</ul>

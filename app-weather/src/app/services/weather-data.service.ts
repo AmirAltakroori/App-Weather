@@ -8,7 +8,6 @@ export class WeatherDataService {
 
   url = "http://api.openweathermap.org/data/2.5/weather?";
   apiKey = "50f4c7abf4138d8dd08fb922f1d2984c";
-
   constructor(private http: HttpClient) { }
 
   /**
@@ -26,11 +25,11 @@ export class WeatherDataService {
     return this.http.get(this.url, { params });
   }
 
-/*
-  getCitiesNearId(id){
+  getDayWeatherDataById(id){
     let params = new HttpParams()
     .set('id', id)
     .set('units', 'metric')
     .set('appid', this.apiKey);
-  }*/
+    return this.http.get(this.url, { params });
+  }
 }
