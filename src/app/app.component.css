@@ -1,1 +1,6 @@
-/* No CSS *//*# sourceMappingURL=app.component.css.map */
+.search {
+  direction: rtl;
+  margin: 10%;
+  font-size: x-large;
+}
+/*# sourceMappingURL=app.component.css.map */

@@ -1,16 +1,9 @@
-:host {
-    display: flex;
-    flex-direction: row;
+.container {
     border-style: solid;
-    margin: 10%;
-    .container {
-        width: 100%;
-        * {
-            display: inline;
-        }
-        img,
-        .mini-next-day-temp {
-            padding-left: 15%;
-        }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    * {
+        margin: 5%;
     }
 }

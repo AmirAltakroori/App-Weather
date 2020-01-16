@@ -18,7 +18,6 @@ export class NextDayComponent implements OnInit {
 
   ngOnInit() {
     this.getDayForecast();
-    this.ourDate = this.dayForecast.list.dt_txt.slice(0,10);
   }
 
   getDayForecast(){
@@ -34,6 +33,9 @@ export class NextDayComponent implements OnInit {
         {
           if (j == this.dayPhase){
             this.dayForecast = element;
+            this.ourDate = this.ourDate.dt_txt.slice(0,10);
+            console.log("ssssssssssss")
+            console.log(this.ourDate.dt_txt.slice(0,10));
           }
           j = j + 1;
         }

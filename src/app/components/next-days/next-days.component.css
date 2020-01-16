@@ -1,0 +1,17 @@
+.container {
+  border-style: solid;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container * {
+  margin: 5%;
+}
+/*# sourceMappingURL=next-days.component.css.map */

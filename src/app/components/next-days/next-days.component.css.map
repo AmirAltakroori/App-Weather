@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,UAAU,CAAC;EACP,YAAY,EAAE,KAAK;EACnB,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,aAAa;EAC9B,WAAW,EAAE,MAAM;CAItB;;AARD,AAKI,UALM,CAKN,CAAC,CAAC;EACE,MAAM,EAAE,EAAE;CACb",
+    "sources": [
+        "next-days.component.scss"
+    ],
+    "names": [],
+    "file": "next-days.component.css"
+}

@@ -1,10 +1,33 @@
-* {
-  margin: 0px;
-  padding: 0px;
+:host {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  border-style: solid;
+  margin: 10%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
 }
 
-.today .get-more-details {
+:host .get-more-details {
   font-size: xx-large;
   color: red;
+}
+
+:host .today {
+  width: 100%;
+}
+
+:host * {
+  margin: auto;
 }
 /*# sourceMappingURL=today.component.css.map */
