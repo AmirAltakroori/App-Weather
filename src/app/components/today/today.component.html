@@ -1,6 +1,5 @@
 <div class="today">
-    <div class="get-more-details">?</div>
-
+    <div class="get-more-details" (click)="onSelect(weather.id)">?</div>
     <div class="main-details">
         <div calss="city">{{weather.name}}</div>
         <div>
@@ -10,7 +9,3 @@
         <div class="status">{{weather.weather[0].main}}</div>
     </div>
 </div>
-
-<ul>
-    <div *ngFor="let item of list"></div>
-</ul>

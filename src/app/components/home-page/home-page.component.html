@@ -1,0 +1,8 @@
+<today [city]="weather.name"></today>
+<br>
+<br>
+<ul>
+    <next-days *ngFor="let phase of phaseList" [city]="weather.name" [dayPhase]="phase">
+
+    </next-days>
+</ul>

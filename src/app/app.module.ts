@@ -8,7 +8,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { NextDayComponent } from './components/next-days/next-day.component';
 import { ListCitiesComponent } from './components/list-cities/list-cities.component';
 import { FormsModule } from '@angular/forms';
-import { WeatherDetailsComponent } from './components/weather-details/weather-details.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
+import { FindCitiesFilterPipe } from './filters/find-cities-filter.pipe';
+import { ForecastDetailsComponent } from './components/forecast-details/forecast-details.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { WeatherDetailsComponent } from './components/weather-details/weather-de
     TodayComponent,
     NextDayComponent,
     ListCitiesComponent,
-    WeatherDetailsComponent,
+    ForecastDetailsComponent,
+    HomePageComponent,
+    FindCitiesFilterPipe,
   ],
   imports: [
     BrowserModule,

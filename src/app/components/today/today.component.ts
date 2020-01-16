@@ -1,6 +1,7 @@
-import { Component, OnInit, AfterContentInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { WeatherDataService } from '../../services/weather-data.service';
 import { ForecastDataService } from 'src/app/services/forecast-data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'today',
@@ -9,73 +10,32 @@ import { ForecastDataService } from 'src/app/services/forecast-data.service';
 })
 export class TodayComponent implements OnInit {
 
-  lat;
-  lon;
+  @Input() city: string;
   weather;
-  foreCast;
-  listForecastDays;
-  mainImg;
-  nextFourDays;
-
-  constructor(private weatherDataService: WeatherDataService, private forecastDataService: ForecastDataService) { }
+  forecast;
 
   ngOnInit() {
-
-    this.getLocationWithDataWeather();
-    this.getforecastDataByCity();
-    let t = new Date();
-
+    this.getWeatherDataByCity();
+    this.getForecastDataByCity();
   }
 
-  gg() {
-    return "http://openweathermap.org/img/wn/" + ".png";
-    //    return "http://openweathermap.org/img/wn/" +  this.weather.weather[0].icon + ".png";
+  constructor(private weatherDataService: WeatherDataService, private forecastDataService: ForecastDataService, private router: Router) { };
 
+  getWeatherDataByCity() {
+    this.weatherDataService.getDayWeatherDataByCityName(this.city).subscribe(data => {
+      this.weather = data;
+    })
   }
 
-  getLocationWithDataWeather() {
-    if ("geolocation" in navigator) {
-      navigator.geolocation.watchPosition((success) => {
-        this.lat = success.coords.latitude;
-        this.lon = success.coords.longitude;
-
-        this.weatherDataService.getDayWeatherDataByCoordinates(this.lat, this.lon).subscribe(data => {
-          this.weather = data;
-          console.log(this.weather);
-        });
-      })
-    }
+  getForecastDataByCity(){
+    this.forecast.getDayWeatherDataByCityName(this.city).subscribe(data => {
+      this.forecast = data;
+    })
   }
 
-  getforecastDataByCity() {
-    if ("geolocation" in navigator) {
-      navigator.geolocation.watchPosition((success) => {
-        this.lat = success.coords.latitude;
-        this.lon = success.coords.longitude;
-
-        this.weatherDataService.getDayWeatherDataByCoordinates(this.lat, this.lon).subscribe(data => {
-          this.weather = data;
-          this.forecastDataService.getDataByCityName(this.weather.name).subscribe(data => {
-            this.foreCast = data;
-            console.log(this.foreCast);
-
-          })
-        });
-      })
-    }
+  onSelect(id){
+    this.router.navigate(['components/forecast-details/',id])
   }
 
-  getNextFoutDays() {
-    if ("geolocation" in navigator) {
-      navigator.geolocation.watchPosition((success) => {
-        this.weatherDataService.getDayWeatherDataByCoordinates(this.lat, this.lon).subscribe(data => {
-          this.weather = data;
-          this.forecastDataService.getDataByCityName(this.weather.name).subscribe(data => {
-            this.listForecastDays = data;
-          })
-        });
-      })
-    }
-  }
 
 }

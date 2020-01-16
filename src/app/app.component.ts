@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   titleOfApp = 'Weather App';
+  am = "london"
+  idx = 3;
 }

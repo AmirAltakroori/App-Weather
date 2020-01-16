@@ -1,3 +1,4 @@
+import { CitiesDataService } from './../../services/cities-data.service';
 import { Component, OnInit } from '@angular/core';
 import { WeatherDataService } from '../../services/weather-data.service';
 
@@ -14,11 +15,11 @@ export class ListCitiesComponent implements OnInit {
   weather;
   cityName: string;
 
-  constructor(private weatherDataService: WeatherDataService) { }
+  constructor(private weatherDataService: WeatherDataService, private citiesDataService: CitiesDataService) { }
 
   ngOnInit() {
     this.getLocation();
-    this.citiesList = [{name: 'a'},{name: 'c'},{name: 'b'},{name: 'aab'}];
+    this.getNearesCities();
   }
 
   getLocation() {
@@ -34,11 +35,19 @@ export class ListCitiesComponent implements OnInit {
     }
   }
 
+  getNearesCities(){
+    this.citiesDataService.getCitiesList(31.527531, 35.101830, 20).subscribe(data => {
+      this.citiesList = data;
+      this.citiesList = this.citiesList.list;
+    });
+  }
+
   search(){
     if (this.cityName ==""){
       this.ngOnInit();
     }
     this.citiesList = this.citiesList.filter(city=>{
+      
       return city.name.toLowerCase().match(this.cityName.toLowerCase());
     });
   }

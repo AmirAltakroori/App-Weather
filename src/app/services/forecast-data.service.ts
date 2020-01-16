@@ -18,16 +18,23 @@ export class ForecastDataService {
     return this.http.get(this.url, { params });
   }
 
-  getFourDays(city){
+  getDayWeatherDataByCityName(city){
+    let start = "";
+    let ctr = 0;
     let params = new HttpParams()
       .set('q', city)
       .set('units', 'metric')
       .set('appid', this.apiKey);
 
-      return [this.http.get(this.url, { params })[10],
-      this.http.get(this.url, { params })[18],
-      this.http.get(this.url, { params })[27],
-      this.http.get(this.url, { params })[35]];
+    return this.http.get(this.url, { params });
+  }
+
+  getDataById(id) {
+    let params = new HttpParams()
+      .set('id', id)
+      .set('units', 'metric')
+      .set('appid', this.apiKey);
+    return this.http.get(this.url, { params });
   }
 }
 

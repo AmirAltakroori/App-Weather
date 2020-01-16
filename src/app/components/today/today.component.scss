@@ -1,11 +1,19 @@
-* {
-    margin: 0px;
-    padding: 0px;
-}
-
-.today {
+:host {
     .get-more-details {
         font-size: xx-large;
         color: red;
+    }
+    display: flex;
+    flex-direction: row;
+    border-style: solid;
+    margin: 10%;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    .today {
+        width: 100%;
+    }
+    * {
+        margin: auto;
     }
 }

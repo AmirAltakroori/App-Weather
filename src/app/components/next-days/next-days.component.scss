@@ -1,0 +1,16 @@
+:host {
+    display: flex;
+    flex-direction: row;
+    border-style: solid;
+    margin: 10%;
+    .container {
+        width: 100%;
+        * {
+            display: inline;
+        }
+        img,
+        .mini-next-day-temp {
+            padding-left: 15%;
+        }
+    }
+}

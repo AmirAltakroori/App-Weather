@@ -1,13 +1,5 @@
-<ng-content select=".next-day-name"></ng-content>
-<div>
-    <div>
-        <ng-content select=".mini-next-day-temp"></ng-content>
-        <img>
-    </div>
-</div>
-<div>
-    <div>
-        <ng-content select=".maxi-next-day-temp"></ng-content>
-        <img>
-    </div>
+<div class="container">
+    <div class="day">{{ourDate}}</div>
+    <div class="mini-next-day-temp"> {{dayForecast.main.temp}}°C </div>
+    <img src="http://openweathermap.org/img/wn/{{dayForecast.weather[0].icon}}.png">
 </div>
