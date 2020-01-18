@@ -1,4 +1,4 @@
-import { ForecastDataService } from 'src/app/services/forecast-data.service';
+import { WeatherDataService } from 'src/app/services/weather-data.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
@@ -11,7 +11,7 @@ export class ForecastDetailsComponent implements OnInit {
 
   forecastDetails;
 
-  constructor(private forecastDataService: ForecastDataService, private route: ActivatedRoute) { }
+  constructor(private weatherDataService: WeatherDataService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     let city = parseInt(this.route.snapshot.paramMap.get('city'));
@@ -19,8 +19,13 @@ export class ForecastDetailsComponent implements OnInit {
     
   }
 
-  getDetailsForecastById(id){
-    this.forecastDataService.getDataById(id).subscribe(data => {
+  getDetailsForecastById(neededID){
+
+    let searchPara = {
+      id: neededID
+    }
+
+    this.weatherDataService.getClimateData("forecast", searchPara).subscribe(data => {
       this.forecastDetails = data;
       this.forecastDetails = this.forecastDetails.list[0];
   });

@@ -1,46 +1,39 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpClientJsonpModule } from '@angular/common/http';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WeatherDataService {
 
-  url = "http://api.openweathermap.org/data/2.5/weather?";
-  apiKey = "50f4c7abf4138d8dd08fb922f1d2984c";
+  url = environment.weatherURL;
+  apiKey = environment.weatherAPI;
+
   constructor(private http: HttpClient) { }
 
   /**
-   * this function return weather data based on spacified 
    * 
-   * @param lat numaric parameter that spacify latitude
-   * @param lon numaric parameter that spacify longtitude
-   * @returns json data that contain weather data
+   * @param serchBy 
+   * @param recivedPram 
    */
-  getDayWeatherDataByCoordinates(lat, lon){
-    let params = new HttpParams()
-    .set('lat', lat).set("lon", lon)
-    .set('units', 'metric')
-    .set('appid', this.apiKey);
-    return this.http.get(this.url, { params });
-  }
+  getClimateData(serchBy:string, recivedPram:any)
+  {
+    let ourUrl = this.url  + serchBy + `?`;
 
-  getDayWeatherDataById(id){
-    let params = new HttpParams()
-    .set('id', id)
-    .set('units', 'metric')
-    .set('appid', this.apiKey);
-    return this.http.get(this.url, { params });
-  }
+    let params = new HttpParams();
 
-  getDayWeatherDataByCityName(city){
-    let params = new HttpParams()
-    .set('q', city)
-    .set('units', 'metric')
-    .set('appid', this.apiKey);
+    params = params.append('units', 'metric');
+    params = params.append('appid', environment.weatherAPI)
+
+    const keys = Object.keys(recivedPram);
+
+    keys.forEach(key => {
+      params = params.append(key, recivedPram[key])
+      console.log(key, "   ", recivedPram)
+    });
     
-    return this.http.get(this.url, { params });
+    return this.http.get(ourUrl, { params });
   }
-
  
 }

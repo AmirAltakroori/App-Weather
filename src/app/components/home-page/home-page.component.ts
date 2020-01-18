@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherDataService } from 'src/app/services/weather-data.service';
-import { ForecastDataService } from 'src/app/services/forecast-data.service';
 
 @Component({
   selector: 'home-page',
@@ -14,7 +13,7 @@ export class HomePageComponent implements OnInit {
   weather;
   phaseList;
 
-  constructor(private weatherDataService: WeatherDataService, private forecastDataService: ForecastDataService) { }
+  constructor(private weatherDataService: WeatherDataService) { }
 
   ngOnInit() {
     this.phaseList = [1,2,3,4];
@@ -27,8 +26,14 @@ export class HomePageComponent implements OnInit {
         this.lat = success.coords.latitude;
         this.lon = success.coords.longitude;
         console.log("ssssssssssssssssssssssssssss")
-        console.log(this.lat    this.lon )
-        this.weatherDataService.getDayWeatherDataByCoordinates(this.lat, this.lon).subscribe(data => {
+        console.log(this.lat + "    " +   this.lon )
+
+        let searchPara = {
+          lat: this.lat,
+          lon: this.lon
+        }
+
+        this.weatherDataService.getClimateData("weather",searchPara).subscribe(data => {
           this.weather = data;
         });
       })

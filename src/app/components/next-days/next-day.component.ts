@@ -1,4 +1,4 @@
-import { ForecastDataService } from './../../services/forecast-data.service';
+import { WeatherDataService } from 'src/app/services/weather-data.service';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -14,14 +14,19 @@ export class NextDayComponent implements OnInit {
   forecastList;
   ourDay;
 
-  constructor(private forecastDataService: ForecastDataService) { }
+  constructor(private weatherDataService: WeatherDataService) { }
 
   ngOnInit() {
     this.getDayForecast();
   }
 
   getDayForecast(){
-    this.forecastDataService.getDayWeatherDataByCityName(this.city).subscribe(data => {
+
+    let searchPara = {
+      q: this.city
+    }
+    
+    this.weatherDataService.getClimateData("forecast", searchPara).subscribe(data => {
       this.forecastList = data;
       
       let start = new Date(this.forecastList.list[0].dt_txt).getHours();
