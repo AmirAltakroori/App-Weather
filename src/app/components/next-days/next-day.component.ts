@@ -12,7 +12,7 @@ export class NextDayComponent implements OnInit {
   @Input() dayPhase: number;
   dayForecast;
   forecastList;
-  ourDate;
+  ourDay;
 
   constructor(private forecastDataService: ForecastDataService) { }
 
@@ -24,24 +24,26 @@ export class NextDayComponent implements OnInit {
     this.forecastDataService.getDayWeatherDataByCityName(this.city).subscribe(data => {
       this.forecastList = data;
       
-      let start = this.forecastList.list[0].dt_txt.slice(10);
-      this.ourDate = this.forecastList.list[0].dt_txt.slice(0,10)
+      let start = new Date(this.forecastList.list[0].dt_txt).getHours();
 
       let j = 0;
       this.forecastList.list.forEach(element => {
-        if (start == element.dt_txt.slice(10))
+        if (start == new Date(element.dt_txt).getHours())
         {
           if (j == this.dayPhase){
             this.dayForecast = element;
-            this.ourDate = this.ourDate.dt_txt.slice(0,10);
-            console.log("ssssssssssss")
-            console.log(this.ourDate.dt_txt.slice(0,10));
+            this.ourDay = this.getNameOfDay(this.dayForecast.dt_txt);
           }
           j = j + 1;
         }
       });
     })
-
   }
 
+  getNameOfDay(date){
+    let weak = [`Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`];
+    let idx  = new Date(date).getDay();
+    return weak[idx];
+  }
 }
+

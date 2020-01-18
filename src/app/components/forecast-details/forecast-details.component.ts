@@ -14,8 +14,8 @@ export class ForecastDetailsComponent implements OnInit {
   constructor(private forecastDataService: ForecastDataService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    let id = parseInt(this.route.snapshot.paramMap.get('id'));
-    this.getDetailsForecastById(id);
+    let city = parseInt(this.route.snapshot.paramMap.get('city'));
+    this.getDetailsForecastById(city);
     
   }
 

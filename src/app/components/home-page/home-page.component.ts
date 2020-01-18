@@ -26,7 +26,8 @@ export class HomePageComponent implements OnInit {
       navigator.geolocation.watchPosition((success) => {
         this.lat = success.coords.latitude;
         this.lon = success.coords.longitude;
-
+        console.log("ssssssssssssssssssssssssssss")
+        console.log(this.lat    this.lon )
         this.weatherDataService.getDayWeatherDataByCoordinates(this.lat, this.lon).subscribe(data => {
           this.weather = data;
         });
