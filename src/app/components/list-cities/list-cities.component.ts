@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment.prod';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { WeatherDataService } from '../../services/weather-data.service';
 
 @Component({
@@ -8,16 +9,19 @@ import { WeatherDataService } from '../../services/weather-data.service';
 })
 export class ListCitiesComponent implements OnInit {
 
+  @Output() listIsHidden = new EventEmitter();
   citiesList;
   lat;
   lon;
   weather;
   cityName: string;
+  closeIcon;
+  filterCity;
 
   constructor(private weatherDataService: WeatherDataService) { }
-
   ngOnInit() {
     this.getLocation();
+    this.closeIcon = environment.closeIcon;
   }
 
   getLocation() {
@@ -25,6 +29,8 @@ export class ListCitiesComponent implements OnInit {
       navigator.geolocation.watchPosition((success) => {
         this.lat = success.coords.latitude;
         this.lon = success.coords.longitude;
+
+        this.getNearesCities(this.lat, this.lon);
 
         let searchPara = {
           lat: this.lat,
@@ -35,16 +41,15 @@ export class ListCitiesComponent implements OnInit {
           this.weather = data;
         });
       })
-    }
-    
-    this.getNearesCities();
+    }    
   }
 
-  getNearesCities(){
+  getNearesCities(lat, lon){
 
     let searchPara = {
-      lat: this.lat,
-      lon: this.lon
+      lat: lat,
+      lon: lon,
+      cnt: 20
     }
 
     this.weatherDataService.getClimateData("find", searchPara).subscribe(data => {
@@ -53,13 +58,7 @@ export class ListCitiesComponent implements OnInit {
     });
   }
 
-  search(){
-    if (this.cityName ==""){
-      this.ngOnInit();
-    }
-    this.citiesList = this.citiesList.filter(city=>{
-      
-      return city.name.toLowerCase().match(this.cityName.toLowerCase());
-    });
+  closeList(status){
+    this.listIsHidden.emit(status);
   }
 }

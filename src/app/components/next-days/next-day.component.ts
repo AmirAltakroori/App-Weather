@@ -1,3 +1,5 @@
+import { environment } from 'src/environments/environment.prod';
+import { WeatherComponent } from './../weather/weather.component';
 import { WeatherDataService } from 'src/app/services/weather-data.service';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -8,47 +10,25 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class NextDayComponent implements OnInit {
 
-  @Input() city: string;
-  @Input() dayPhase: number;
-  dayForecast;
-  forecastList;
+  @Input() dayWeather: WeatherComponent;
   ourDay;
+  imgUrl;
 
   constructor(private weatherDataService: WeatherDataService) { }
 
   ngOnInit() {
-    this.getDayForecast();
-  }
-
-  getDayForecast(){
-
-    let searchPara = {
-      q: this.city
-    }
-    
-    this.weatherDataService.getClimateData("forecast", searchPara).subscribe(data => {
-      this.forecastList = data;
-      
-      let start = new Date(this.forecastList.list[0].dt_txt).getHours();
-
-      let j = 0;
-      this.forecastList.list.forEach(element => {
-        if (start == new Date(element.dt_txt).getHours())
-        {
-          if (j == this.dayPhase){
-            this.dayForecast = element;
-            this.ourDay = this.getNameOfDay(this.dayForecast.dt_txt);
-          }
-          j = j + 1;
-        }
-      });
-    })
+    this.ourDay = this.getNameOfDay(this.dayWeather.date);
+    this.imgUrl = environment.weatherIconUrl + this.dayWeather.icon ;
   }
 
   getNameOfDay(date){
     let weak = [`Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`];
     let idx  = new Date(date).getDay();
     return weak[idx];
+  }
+
+  onSelect(id){
+    
   }
 }
 

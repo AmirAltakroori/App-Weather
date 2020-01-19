@@ -1,0 +1,13 @@
+<div class="container">
+    <div> <img (click)="showCitiesSearch()" class="search-icon" src={{imgSearch}} alt="Search Icon"> </div>
+
+    <div class="weather-details">
+        <today [dayWeather]="weather"></today>
+        <br>
+        <ul>
+            <next-days *ngFor="let forecast of nextDaysWeather" [dayWeather]="forecast"></next-days>
+        </ul>
+    </div>
+
+    <list-cities class="cities-list" (listIsHidden)="closeCitiesList($event)" *ngIf="showCitiesList"></list-cities>
+</div>

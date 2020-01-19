@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ForecastDetailsComponent } from './components/forecast-details/forecast-details.component';
+import { ForecastDetailsComponent } from './pages/forecast-details/forecast-details.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'components/home-page', pathMatch: 'full'},
+  { path: '', redirectTo: 'routingComponents/home-page', pathMatch: 'full'},
   { path: 'components/forecast-details/:city', component: ForecastDetailsComponent},
 ];
 

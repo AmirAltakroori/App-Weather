@@ -1,0 +1,30 @@
+.container {
+    background-color: rgba(0, 0, 0, 0.719);
+    overflow: scroll;
+    color: white;
+    img {
+        width: 8%;
+    }
+    .header {
+        justify-content: center;
+        text-align: center;
+        overflow: auto;
+        input {
+            height: 37px;
+            font-size: large;
+        }
+    }
+    ul {
+        list-style: none;
+        justify-content: center;
+        text-align: center;
+        li {
+            font-size: xx-large;
+            margin: 2px;
+            padding: 2%;
+        }
+        li:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+    }
+}

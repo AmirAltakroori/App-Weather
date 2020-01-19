@@ -22,18 +22,14 @@ export class WeatherDataService {
     let ourUrl = this.url  + serchBy + `?`;
 
     let params = new HttpParams();
-
-    params = params.append('units', 'metric');
-    params = params.append('appid', environment.weatherAPI)
-
     const keys = Object.keys(recivedPram);
 
     keys.forEach(key => {
       params = params.append(key, recivedPram[key])
-      console.log(key, "   ", recivedPram)
     });
+
+    params = params.append('appid', environment.weatherAPI)
     
     return this.http.get(ourUrl, { params });
-  }
- 
+  } 
 }

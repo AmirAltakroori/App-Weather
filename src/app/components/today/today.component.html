@@ -1,11 +1,11 @@
 <div class="today">
-    <div class="get-more-details" (click)="onSelect(weather.id)">?</div>
+    <div class="get-more-details" (click)="onSelect(dayWeather.id)">?</div>
     <div class="main-details">
-        <div calss="city">{{weather.name}}</div>
+        <div calss="city">{{dayWeather.city}}</div>
         <div>
-            <div class="main-temp">{{weather.main.temp}} °C</div>
-            <img src="http://openweathermap.org/img/wn/{{this.weather.weather[0].icon}}.png">
+            <div class="main-temp">{{dayWeather.temp}} °C</div>
+            <img src="{{imgUrl}}.png">
         </div>
-        <div class="status">{{weather.weather[0].main}}</div>
+        <div class="status">{{dayWeather.main}}</div>
     </div>
 </div>

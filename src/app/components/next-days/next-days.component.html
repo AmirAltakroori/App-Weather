@@ -1,5 +1,8 @@
-<div class="container">
-    <div class="day">{{ourDay}}</div>
-    <div class="mini-next-day-temp"> {{dayForecast.main.temp}}°C </div>
-    <img src="http://openweathermap.org/img/wn/{{dayForecast.weather[0].icon}}.png">
+<div class="next-day">
+    <div class="more-info">?</div>
+    <div class="container">
+        <div class="day">{{ourDay}}</div>
+        <div class="mini-next-day-temp"> {{dayWeather.temp}}C&deg; </div>
+        <img src="{{imgUrl}}.png">
+    </div>
 </div>
