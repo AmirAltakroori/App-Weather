@@ -1,3 +1,6 @@
+import { WeatherDataService } from './services/weather-data.service';
+import { ClimateConvarterService } from './services/climate-convarter.service';
+import { ResolveLocationService } from './services/resolve-location.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -28,9 +31,9 @@ import { ForecastDetailsComponent } from './pages/forecast-details/forecast-deta
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
+    FormsModule, 
   ],
-  providers: [],
+  providers: [ResolveLocationService, ClimateConvarterService, WeatherDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,7 @@
 import { environment } from 'src/environments/environment.prod';
 import { WeatherComponent } from './../weather/weather.component';
-import { WeatherDataService } from 'src/app/services/weather-data.service';
 import { Component, OnInit, Input } from '@angular/core';
+import { WeatherDataService } from 'src/app/services/weather-data.service';
 
 @Component({
   selector: 'next-days',
@@ -12,13 +12,12 @@ export class NextDayComponent implements OnInit {
 
   @Input() dayWeather: WeatherComponent;
   ourDay;
-  imgUrl;
 
   constructor(private weatherDataService: WeatherDataService) { }
 
   ngOnInit() {
     this.ourDay = this.getNameOfDay(this.dayWeather.date);
-    this.imgUrl = environment.weatherIconUrl + this.dayWeather.icon ;
+    
   }
 
   getNameOfDay(date){

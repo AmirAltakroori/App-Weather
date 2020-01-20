@@ -2,25 +2,35 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
   border-style: solid;
   margin: 10%;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-line-pack: center;
-      align-content: center;
 }
 
 :host .get-more-details {
   font-size: xx-large;
   color: red;
+}
+
+:host .main-details {
+  display: -ms-grid;
+  display: grid;
+  font-size: x-large;
+}
+
+:host .main-details .main-temp {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+:host .main-details img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+:host .main-details * {
+  padding-bottom: 4%;
 }
 
 :host .today {

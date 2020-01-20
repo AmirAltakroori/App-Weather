@@ -16,6 +16,7 @@ export class HomePageComponent implements OnInit {
   imgSearch;
   showCitiesList;
   nextDaysWeather: WeatherComponent[];
+  citiesList: any;
 
   constructor(private weatherDataService: WeatherDataService,
     private climateConvarterService: ClimateConvarterService) { }
@@ -43,6 +44,7 @@ export class HomePageComponent implements OnInit {
           this.weather = this.climateConvarterService.fillClimateData("weather", data);
         });
         this.getNextDaysWeather();
+        this.getNearesCities();
       })
     }
 
@@ -70,9 +72,11 @@ export class HomePageComponent implements OnInit {
 
           if (this.nextDaysWeather.length < 4 && start != new Date(element.dt_txt).getDate()) {
             start = new Date(element.dt_txt).getDate();
-
+            forecast.date = element.dt_txt;
             this.nextDaysWeather.push(forecast);
+
           }
+
         });
 
       } catch (error) {
@@ -82,6 +86,26 @@ export class HomePageComponent implements OnInit {
     })
 
   }
+
+  getNearesCities(){
+
+    let searchPara = {
+      lat: this.lat,
+      lon: this.lon,
+      cnt: 20
+    }
+
+    this.weatherDataService.getClimateData("find", searchPara).subscribe(data => {
+      this.citiesList = data;
+      this.citiesList = this.citiesList.list;
+    });
+
+  }
+
+  changeCurrentCity(city: string){
+    
+  }
+ 
 
   showCitiesSearch() {
     this.showCitiesList = true;

@@ -1,11 +1,12 @@
 <div class="today">
-    <div class="get-more-details" (click)="onSelect(dayWeather.id)">?</div>
+    <!--(click)="onSelect(weather.id)"-->
+    <div class="get-more-details">?</div>
     <div class="main-details">
-        <div calss="city">{{dayWeather.city}}</div>
+        <div calss="city">{{dayWeather?.city}}</div>
         <div>
-            <div class="main-temp">{{dayWeather.temp}} °C</div>
-            <img src="{{imgUrl}}.png">
+            <div class="main-temp">{{dayWeather?.temp}} °C</div>
+            <img src="{{dayWeather?.icon}}.png">
         </div>
-        <div class="status">{{dayWeather.main}}</div>
+        <div class="status">{{dayWeather?.description}}</div>
     </div>
 </div>

@@ -26,7 +26,7 @@ export class WeatherComponent {
     this._city = "city";
     this._date = "date";
     this._description = "dis";
-    this._icon = "icon";
+    this._icon = "10n";
     this._id = 0;
     this._lat = 0;
     this._lon = 0;
