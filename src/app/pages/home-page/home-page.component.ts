@@ -18,45 +18,53 @@ export class HomePageComponent implements OnInit {
   nextDaysWeather: WeatherComponent[];
   citiesList: any;
 
-  constructor(private weatherDataService: WeatherDataService, 
+  constructor(private weatherDataService: WeatherDataService,
     private climateConvarterService: ClimateConvarterService) { }
 
   ngOnInit() {
     this.nextDaysWeather = [];
-    this.getLocationWithDataWeather();
+    this.getCurrentLocationWithData();
+    
     this.imgSearch = environment.searchIcon;
     this.showCitiesList = false;
   }
 
-  getLocationWithDataWeather() {
+  getCurrentLocationWithData() {
     if ("geolocation" in navigator) {
       navigator.geolocation.watchPosition((success) => {
         this.lat = success.coords.latitude;
         this.lon = success.coords.longitude;
-
-        let searchPara = {
-          lat: this.lat,
-          lon: this.lon,
-          units: `metric`
-        }
-
-        this.weatherDataService.getClimateData("weather", searchPara).subscribe(data => {
-          this.weather = this.climateConvarterService.fillClimateData("weather", data);
-        });
-        this.getNextDaysWeather();
-        this.getNearesCities();
+        this.getPageDataWeather(this.lat, this.lon);
       })
+      
     }
+  }
+
+  getPageDataWeather(byLat, byLon) {
+
+    let searchPara = {
+      lat: byLat,
+      lon: byLon,
+    }
+
+    this.getCurrentDataWeather(searchPara);
+    this.getNextDaysWeather(searchPara);
+    this.getNearesCities(searchPara);
 
   }
 
-  getNextDaysWeather() {
+  getCurrentDataWeather(searchPara) {
 
-    let searchPara = {
-      lat: this.lat,
-      lon: this.lon,
-      units: `metric`
-    }
+    searchPara = { ...searchPara, units: `metric` };
+    this.weatherDataService.getClimateData("weather", searchPara).subscribe(data => {
+      this.weather = this.climateConvarterService.fillClimateData("weather", data);
+    });
+
+  }
+
+  getNextDaysWeather(searchPara) {
+    this.nextDaysWeather = [];
+    searchPara = { ...searchPara, units: `metric` };
 
     this.weatherDataService.getClimateData("forecast", searchPara).subscribe(data => {
 
@@ -82,13 +90,9 @@ export class HomePageComponent implements OnInit {
 
   }
 
-  getNearesCities(){
+  getNearesCities(searchPara) {
 
-    let searchPara = {
-      lat: this.lat,
-      lon: this.lon,
-      cnt: 20
-    }
+    searchPara = { ...searchPara, cnt: 50 };
 
     this.weatherDataService.getClimateData("find", searchPara).subscribe(data => {
       this.citiesList = data;
@@ -97,10 +101,13 @@ export class HomePageComponent implements OnInit {
 
   }
 
-  changeCurrentCity(city: string){
-    console.log(city);
+  changeCurrentCity(cityData: any) {
+    let lat = cityData.coord.lat;
+    let lon = cityData.coord.lon;
+    this.getPageDataWeather(lat, lon);
+
   }
- 
+
 
   showCitiesSearch() {
     this.showCitiesList = true;
