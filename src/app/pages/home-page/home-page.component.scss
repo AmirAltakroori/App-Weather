@@ -4,25 +4,29 @@
 }
 
 :host {
+    display: flex;
     background-image: url("https://visme.co/blog/wp-content/uploads/2017/07/50-Beautiful-and-Minimalist-Presentation-Backgrounds-03.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    display: flex;
     .search-icon {
         direction: ltr;
         float: right;
         width: 15%;
     }
     .container {
-        height: 100%;
         width: 100%;
-        flex-direction: column;
         display: flex;
         margin: 3% 3% 0% 3%;
-        .cities-list {
-            position: absolute;
-            width: 95%;
+        .content {
+            width: 100%;
+            display: grid;
+            .cities-list {
+                height: inherit;
+                overflow-y: scroll;
+                position: absolute;
+                width: 95%;
+            }
         }
     }
 }

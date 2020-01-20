@@ -18,7 +18,7 @@ export class HomePageComponent implements OnInit {
   nextDaysWeather: WeatherComponent[];
   citiesList: any;
 
-  constructor(private weatherDataService: WeatherDataService,
+  constructor(private weatherDataService: WeatherDataService, 
     private climateConvarterService: ClimateConvarterService) { }
 
   ngOnInit() {
@@ -61,20 +61,15 @@ export class HomePageComponent implements OnInit {
     this.weatherDataService.getClimateData("forecast", searchPara).subscribe(data => {
 
       let forecastList: any = data;
-
       try {
-
         let start = new Date(forecastList.list[0].dt_txt).getDate();
-
         forecastList.list.forEach(element => {
 
           let forecast: WeatherComponent = this.climateConvarterService.fillClimateData("weather", element);
-
           if (this.nextDaysWeather.length < 4 && start != new Date(element.dt_txt).getDate()) {
             start = new Date(element.dt_txt).getDate();
             forecast.date = element.dt_txt;
             this.nextDaysWeather.push(forecast);
-
           }
 
         });
@@ -103,7 +98,7 @@ export class HomePageComponent implements OnInit {
   }
 
   changeCurrentCity(city: string){
-    
+    console.log(city);
   }
  
 

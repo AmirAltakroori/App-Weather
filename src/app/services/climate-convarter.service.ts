@@ -23,7 +23,7 @@ export class ClimateConvarterService {
     weatherData.id = data.weather[0].id;
     weatherData.main = data.weather[0].main;
     weatherData.description = data.weather[0].description;
-    weatherData.icon = environment.weatherIconUrl + data.weather[0].icon;
+    weatherData.icon = environment.weatherIconUrl + data.weather[0].icon + ".png";
 
     weatherData.temp = data.main.temp;
     weatherData.maxTemp = data.main.temp_max;
@@ -46,7 +46,7 @@ export class ClimateConvarterService {
     forecastData.id = data.list[0].weather[0].id;
     forecastData.main = data.list[0].weather[0].main;
     forecastData.description = data.list[0].weather[0].description;
-    forecastData.icon = environment.weatherIconUrl + data.list[0].weather[0].icon;
+    forecastData.icon = environment.weatherIconUrl + data.list[0].weather[0].icon + ".png";
 
     forecastData.temp = data.list[0].main.temp;
     forecastData.maxTemp = data.list[0].main.temp_max;
