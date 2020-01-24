@@ -36,27 +36,27 @@ export class WeatherDataService {
     return this.http.get(ourUrl, { params });
   }
 
-  localWeather() {
-    return new Promise((res, rej) => {
-      navigator.geolocation.getCurrentPosition((pos) => {
-        this.location = pos.coords;
-        const newLat = this.location.latitude;
-        const newLon = this.location.longtitude;
+  // localWeather() {
+  //   return new Promise((res, rej) => {
+  //     navigator.geolocation.getCurrentPosition((pos) => {
+  //       this.location = pos.coords;
+  //       const newLat = this.location.latitude;
+  //       const newLon = this.location.longtitude;
 
-        let searchPara = {
-          lat: newLat,
-          lon: newLon,
-          units: `metric`
-        }
+  //       let searchPara = {
+  //         lat: newLat,
+  //         lon: newLon,
+  //         units: `metric`
+  //       }
 
-        this.getClimateData("weather", searchPara).map((response: Response) =>
-          response.json()).toPromise().then(
-            (data) => {
-              this.weather = this.climateConvarterService.fillClimateData("weather", data);
-              res(this.weather);
-            }
-          )
-      })
-    })
-  }
+  //       this.getClimateData("weather", searchPara).map((response: Response) =>
+  //         response.json()).toPromise().then(
+  //           (data) => {
+  //             this.weather = this.climateConvarterService.fillClimateData("weather", data);
+  //             res(this.weather);
+  //           }
+  //         )
+  //     })
+  //   })
+  // }
 }

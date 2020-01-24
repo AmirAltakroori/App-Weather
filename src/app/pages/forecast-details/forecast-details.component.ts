@@ -1,3 +1,4 @@
+import { StorageService } from './../../services/storage.service';
 import { ClimateConvarterService } from './../../services/climate-convarter.service';
 import { environment } from 'src/environments/environment.prod';
 import { WeatherDataService } from 'src/app/services/weather-data.service';
@@ -13,28 +14,30 @@ import { WeatherComponent } from 'src/app/components/weather/weather.component';
 export class ForecastDetailsComponent implements OnInit {
 
   forecastData: WeatherComponent;
-  urlImg: string;
 
-  constructor(private weatherDataService: WeatherDataService,
+  constructor(
     private route: ActivatedRoute,
-    private climateConverter: ClimateConvarterService) { }
+    private storage: StorageService
+  ) { }
 
   ngOnInit() {
-    let city = parseInt(this.route.snapshot.paramMap.get('city'));
-    this.getDetailsForecastById(city);
+    let id = parseInt(this.route.snapshot.paramMap.get('id'));
+    this.getDetailsForecastById(id);
   }
 
-  getDetailsForecastById(city) {
+  getDetailsForecastById(id) {
 
-    let searchPara = {
-      q: city,
-      units: `metric`
+    try {
+      let forecasteList = this.storage.weathersData;
+      forecasteList.forEach(forecast => {
+        if (forecast.id == id) {
+          this.forecastData = forecast;
+        }
+      });
+
+    } catch (error) {
+      console.log(error)
     }
-
-    this.weatherDataService.getClimateData("forecast", searchPara).subscribe(data => {
-      this.forecastData = this.climateConverter.fillClimateData("forecaste", data);
-      this.urlImg = environment.weatherIconUrl + this.forecastData.icon;
-    });
 
   }
 

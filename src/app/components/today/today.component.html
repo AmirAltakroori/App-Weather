@@ -1,11 +1,8 @@
 <div class="today">
-    <!--(click)="onSelect(weather.id)"-->
-    <div class="get-more-details">?</div>
     <div class="main-details">
         <div calss="city">{{dayWeather?.city}}</div>
         <div>
             <div class="main-temp">{{dayWeather?.temp}} °C</div>
-            <!--<img src="{{dayWeather?.icon}}" />-->
             <img *ngIf="dayWeather" [src]="dayWeather.icon" />
         </div>
         <div class="status">{{dayWeather?.description}}</div>

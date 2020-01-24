@@ -1,6 +1,5 @@
 import { WeatherDataService } from './services/weather-data.service';
 import { ClimateConvarterService } from './services/climate-convarter.service';
-import { ResolveLocationService } from './services/resolve-location.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -12,9 +11,9 @@ import { NextDayComponent } from './components/next-days/next-day.component';
 import { ListCitiesComponent } from './components/list-cities/list-cities.component';
 import { FormsModule } from '@angular/forms';
 import { FindCitiesFilterPipe } from './filters/find-cities-filter.pipe';
-import { WeatherComponent } from './components/weather/weather.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { ForecastDetailsComponent } from './pages/forecast-details/forecast-details.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +24,7 @@ import { ForecastDetailsComponent } from './pages/forecast-details/forecast-deta
     ForecastDetailsComponent,
     HomePageComponent,
     FindCitiesFilterPipe,
-    WeatherComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +32,7 @@ import { ForecastDetailsComponent } from './pages/forecast-details/forecast-deta
     HttpClientModule,
     FormsModule, 
   ],
-  providers: [ResolveLocationService, ClimateConvarterService, WeatherDataService],
+  providers: [ ClimateConvarterService, WeatherDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

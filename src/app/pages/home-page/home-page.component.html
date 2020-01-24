@@ -3,11 +3,19 @@
         <div> <img (click)="showCitiesSearch()" class="search-icon" src={{imgSearch}} alt="Search Icon"> </div>
 
         <div class="weather-details">
-            <today [dayWeather]="weather"></today>
-            <br>
-            <ul>
-                <next-days *ngFor="let forecast of nextDaysWeather" [dayWeather]="forecast"></next-days>
-            </ul>
+
+            <div class="today-weather">
+                <div (click)="showWeatherDetails(weather.id)" class="get-more-details">?</div>
+                <today [dayWeather]="weather"></today>
+            </div>
+
+            <div class="next-days-forecaste">
+                <ul *ngFor="let forecast of nextDaysWeather">
+                    <div (click)="showWeatherDetails(forecast?.id)" class="get-more-details">?</div>
+                    <next-days [dayWeather]="forecast"></next-days>
+                </ul>
+            </div>
+
         </div>
 
         <div class="cities-list">

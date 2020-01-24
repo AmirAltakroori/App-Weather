@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { StorageService } from './../../services/storage.service';
 import { ClimateConvarterService } from './../../services/climate-convarter.service';
 import { environment } from 'src/environments/environment.prod';
 import { Component, OnInit } from '@angular/core';
@@ -18,15 +20,33 @@ export class HomePageComponent implements OnInit {
   nextDaysWeather: WeatherComponent[];
   citiesList: any;
 
-  constructor(private weatherDataService: WeatherDataService,
-    private climateConvarterService: ClimateConvarterService) { }
+  constructor(
+    private router: Router,
+    private weatherDataService: WeatherDataService,
+    private climateConvarterService: ClimateConvarterService,
+    private storage: StorageService,
+  ) { }
 
   ngOnInit() {
-    this.nextDaysWeather = [];
-    this.getCurrentLocationWithData();
     
+    this.fillDataPage();
     this.imgSearch = environment.searchIcon;
     this.showCitiesList = false;
+  }
+  fillDataPage() {
+    if (!this.storage.weathersData) {
+      this.nextDaysWeather = [];
+      this.getCurrentLocationWithData();
+    } else {
+      try {
+
+       [this.weather, ...this.nextDaysWeather] = this.storage.weathersData;
+       this.citiesList = this.storage.citiesList;
+
+      } catch (error) {
+        console.log(error);
+      }
+    }
   }
 
   getCurrentLocationWithData() {
@@ -36,7 +56,7 @@ export class HomePageComponent implements OnInit {
         this.lon = success.coords.longitude;
         this.getPageDataWeather(this.lat, this.lon);
       })
-      
+
     }
   }
 
@@ -108,6 +128,11 @@ export class HomePageComponent implements OnInit {
 
   }
 
+  showWeatherDetails(id: number){
+    this.storage.weathersData = [this.weather, ...this.nextDaysWeather]
+    this.storage.citiesList = this.citiesList;
+    this.router.navigate([`/forecast-details`, id]);
+  }
 
   showCitiesSearch() {
     this.showCitiesList = true;

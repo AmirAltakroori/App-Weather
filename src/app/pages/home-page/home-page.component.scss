@@ -19,6 +19,10 @@
         display: flex;
         margin: 3% 3% 0% 3%;
         .content {
+            .get-more-details {
+                font-size: xx-large;
+                color: red;
+            }
             width: 100%;
             display: grid;
             .cities-list {
