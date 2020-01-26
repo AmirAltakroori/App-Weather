@@ -19,6 +19,11 @@
   width: 15%;
 }
 
+:host :hover .search-icon,
+:host .get-more-details {
+  cursor: pointer;
+}
+
 :host .container {
   width: 100%;
   display: -webkit-box;
@@ -31,6 +36,11 @@
   width: 100%;
   display: -ms-grid;
   display: grid;
+}
+
+:host .container .content .get-more-details {
+  font-size: xx-large;
+  color: red;
 }
 
 :host .container .content .cities-list {

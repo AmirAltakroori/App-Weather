@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    form {
+        margin-top: auto;
+        background-color: cornflowerblue;
+        padding: 15%;
+    }
+    form,
+    span {
+        display: grid;
+        * {
+            margin: 3%;
+        }
+    }
+    input,
+    button {
+        width: 250px;
+    }
+    input {
+        height: 55px;
+    }
+    .invalid-input {
+        color: brown;
+        background-color: tomato;
+    }
+    .valid-input {
+        color: green;
+        background-color: chartreuse;
+    }
+}

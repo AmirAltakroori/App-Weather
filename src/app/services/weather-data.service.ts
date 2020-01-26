@@ -1,8 +1,6 @@
-import { ClimateConvarterService } from './climate-convarter.service';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams, HttpClientJsonpModule } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment.prod';
-import { WeatherComponent } from '../components/weather/weather.component';
 
 @Injectable({
   providedIn: 'root'
@@ -11,18 +9,20 @@ export class WeatherDataService {
 
   url = environment.weatherURL;
   apiKey = environment.weatherAPI;
-  private location;
-  private weather: WeatherComponent = new WeatherComponent();
 
-  constructor(private http: HttpClient, private climateConvarterService: ClimateConvarterService) { }
+  constructor(private http: HttpClient) { }
 
   /**
    * 
-   * @param serchBy 
-   * @param recivedPram 
+   * function that recive the query string from and object parameters from the pages
+   * then goes to {$url} and bring data
+   * 
+   * @param searchBy string, find for cities, weather for weather data and forecast for forecast list data
+
+   * @param recivedPram object of parameters 
    */
-  getClimateData(serchBy: string, recivedPram: any): any {
-    let ourUrl = this.url + serchBy + `?`;
+  getClimateData(searchBy: string, recivedPram: any): any {
+    let ourUrl = this.url + searchBy + `?`;
 
     let params = new HttpParams();
     const keys = Object.keys(recivedPram);
@@ -36,27 +36,4 @@ export class WeatherDataService {
     return this.http.get(ourUrl, { params });
   }
 
-  // localWeather() {
-  //   return new Promise((res, rej) => {
-  //     navigator.geolocation.getCurrentPosition((pos) => {
-  //       this.location = pos.coords;
-  //       const newLat = this.location.latitude;
-  //       const newLon = this.location.longtitude;
-
-  //       let searchPara = {
-  //         lat: newLat,
-  //         lon: newLon,
-  //         units: `metric`
-  //       }
-
-  //       this.getClimateData("weather", searchPara).map((response: Response) =>
-  //         response.json()).toPromise().then(
-  //           (data) => {
-  //             this.weather = this.climateConvarterService.fillClimateData("weather", data);
-  //             res(this.weather);
-  //           }
-  //         )
-  //     })
-  //   })
-  // }
 }

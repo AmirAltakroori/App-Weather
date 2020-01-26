@@ -6,7 +6,10 @@ import { Injectable } from '@angular/core';
 })
 export class StorageService {
 
+  // All Wethers Data details in one page
   private _weathersData: WeatherComponent[];
+
+  // Cities list name of one page
   private _citiesList: string[];
   
   constructor() { }

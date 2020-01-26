@@ -17,6 +17,7 @@ export class ListCitiesComponent implements OnInit {
   filterCity;
 
   constructor(private weatherDataService: WeatherDataService) { }
+  
   ngOnInit() {
     this.closeIcon = environment.closeIcon;
   }

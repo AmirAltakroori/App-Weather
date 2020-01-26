@@ -1,0 +1,16 @@
+form,
+span {
+  display: -ms-grid;
+  display: grid;
+}
+
+.invalid-input {
+  color: brown;
+  background-color: tomato;
+}
+
+.valid-input {
+  color: green;
+  background-color: chartreuse;
+}
+/*# sourceMappingURL=login-form.component.css.map */

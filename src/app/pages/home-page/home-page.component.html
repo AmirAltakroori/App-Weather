@@ -5,7 +5,7 @@
         <div class="weather-details">
 
             <div class="today-weather">
-                <div (click)="showWeatherDetails(weather.id)" class="get-more-details">?</div>
+                <div (click)="showWeatherDetails(weather?.id)" class="get-more-details">?</div>
                 <today [dayWeather]="weather"></today>
             </div>
 

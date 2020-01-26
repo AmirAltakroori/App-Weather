@@ -1,12 +1,17 @@
 <div class="container">
+
+    <!-- Close icon -->
     <div (click)="closeList()"><img src="{{closeIcon}}" alt=""></div>
+
+    <!-- Search header -->
     <div class="header">
         <h1>Search by city</h1>
         <input placeholder="city name" type="text" [(ngModel)]="filterCity">
-
     </div>
 
+    <!-- Cities list names  -->
     <ul class="search-result">
         <li *ngFor="let city of citiesList | findCitiesFilter : filterCity" (click)="changeCity(city)">{{city.name}}</li>
     </ul>
+
 </div>

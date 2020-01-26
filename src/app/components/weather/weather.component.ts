@@ -1,4 +1,6 @@
-
+/**
+ * Class that have all weather attributes
+ */
 export class WeatherComponent {
 
   private _id: number;

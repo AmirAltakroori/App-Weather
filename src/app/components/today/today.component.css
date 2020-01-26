@@ -6,11 +6,6 @@
   margin: 10%;
 }
 
-:host .get-more-details {
-  font-size: xx-large;
-  color: red;
-}
-
 :host .main-details {
   display: -ms-grid;
   display: grid;

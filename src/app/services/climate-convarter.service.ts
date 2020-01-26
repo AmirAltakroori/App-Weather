@@ -9,6 +9,19 @@ export class ClimateConvarterService {
 
   constructor() { }
 
+  /**
+   * function that recived an any object has weather details from  weather free open API
+   * and return that as a weather-component object 
+   * 
+   * type is "forecast" if the data came from forecast API
+   * type is "weahter" if the data came from weahter API
+   * 
+   * @param type string
+   * 
+   * @param data any weahter was recived from API weather
+   * 
+   * @returns WeatherComponent
+   */
   fillClimateData(type: string, data: any): WeatherComponent {
     if (type == "forecast")
       return this.fillForecastData(data);
@@ -17,6 +30,12 @@ export class ClimateConvarterService {
     return data;
   }
 
+  /**
+   * 
+   * Built as the weather object structured
+   * 
+   * @param data any weahter was recived from API weather
+   */
   private fillWeatherData(data: any): WeatherComponent {
     let weatherData = new WeatherComponent();
 
@@ -40,6 +59,12 @@ export class ClimateConvarterService {
     return weatherData;
   }
 
+  /**
+   * 
+   * Built as the forecast object structured
+   * 
+   * @param data Any weahter was recived from API weather
+   */
   private fillForecastData(data: any): WeatherComponent {
     let forecastData = new WeatherComponent();
 

@@ -14,6 +14,10 @@
         float: right;
         width: 15%;
     }
+     :hover .search-icon,
+    .get-more-details {
+        cursor: pointer;
+    }
     .container {
         width: 100%;
         display: flex;

@@ -1,3 +1,4 @@
+import { LoginModule } from './login-module/login-module.module';
 import { WeatherDataService } from './services/weather-data.service';
 import { ClimateConvarterService } from './services/climate-convarter.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -31,6 +32,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     AppRoutingModule,
     HttpClientModule,
     FormsModule, 
+    LoginModule
   ],
   providers: [ ClimateConvarterService, WeatherDataService],
   bootstrap: [AppComponent]

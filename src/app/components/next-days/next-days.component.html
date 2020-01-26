@@ -1,8 +1,8 @@
 <div class="next-day">
     <div class="container">
+        <!-- next day's forecast  -->
         <div class="day">{{ourDay}}</div>
         <div class="mini-next-day-temp"> {{dayWeather.temp}}C&deg; </div>
-        <!--    <img src="{{dayWeather?.icon}}.png" />-->
         <img *ngIf="dayWeather" [src]="dayWeather.icon" />
     </div>
 </div>
