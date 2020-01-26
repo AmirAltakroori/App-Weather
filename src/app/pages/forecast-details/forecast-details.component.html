@@ -1,13 +1,17 @@
 <div class="container">
+
+    <!-- Main weather details -->
     <div class="main-details">
         <h1 class="temp">{{forecastData?.temp}}&deg;C</h1>
         <img *ngIf="forecastData" [src]="forecastData.icon" />
         <h2 class="description">{{forecastData?.description}}</h2>
     </div>
+
+    <!-- Next days weather -->
     <div class="more-info">
         <div class="temp-range">
-            <h3>From: {{forecastData?.maxTemp}}&deg;C</h3>
-            <h3>To: {{forecastData?.minTemp}}&deg;C</h3>
+            <h3>From: {{forecastData?.minTemp}}&deg;C</h3>
+            <h3>To: {{forecastData?.maxTemp}}&deg;C</h3>
         </div>
         <div class="small-details">
             <p>Wind speed: {{forecastData?.windSpeed}}KmH </p>
@@ -15,5 +19,6 @@
         </div>
     </div>
 
-    <div class="return-icon" [routerLink]="['/home-page']" routerLinkActive="active">return</div>
+    <!-- return to previous home page -->
+    <div class="return-icon" [routerLink]="['/home-page']" routerLinkActive="active">Return to Home page</div>
 </div>

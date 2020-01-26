@@ -2,4 +2,8 @@
   font-size: xx-large;
   color: red;
 }
+
+:hover .return-icon {
+  cursor: pointer;
+}
 /*# sourceMappingURL=forecast-details.component.css.map */

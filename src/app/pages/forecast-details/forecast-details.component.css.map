@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "AAAA,AAAA,YAAY,CAAC;EACT,SAAS,EAAE,QAAQ;EACnB,KAAK,EAAE,GAAG;CACb",
+    "mappings": "AAAA,AAAA,YAAY,CAAC;EACT,SAAS,EAAE,QAAQ;EACnB,KAAK,EAAE,GAAG;CACb;;AAED,AAAA,MAAM,CAAC,YAAY,CAAC;EAChB,MAAM,EAAE,OAAO;CAClB",
     "sources": [
         "forecast-details.component.scss"
     ],

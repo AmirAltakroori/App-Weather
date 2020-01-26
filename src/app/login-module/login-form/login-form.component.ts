@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { TextValidator } from './../classes/text-validator';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'login-form',
@@ -12,14 +12,13 @@ export class LoginFormComponent implements OnInit {
 
   public formSignup: FormGroup;
 
-    
-    constructor(private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit() {
     this.formSignup = this.creatSignupForm();
     console.log(this.formSignup);
   }
-  
+
   submit() {
     console.log(this.formSignup);
     this.router.navigate([`/home-page`]);
@@ -29,11 +28,11 @@ export class LoginFormComponent implements OnInit {
   creatSignupForm(): FormGroup {
     return this.formBuilder.group(
       {
+
         email: [null, Validators.compose([
-          Validators.email,
           Validators.required,
           Validators.maxLength(20),
-          TextValidator.patternValidator(/(?=@pseu.edu$)/, { fromUntisEmail: true }),
+          TextValidator.patternValidator(/(?=@pseu.edu$)/, { fromUntisEmail: true })
         ])
         ],
 
@@ -44,11 +43,12 @@ export class LoginFormComponent implements OnInit {
           TextValidator.patternValidator(/[0-9]/, { hasNumber: true }),
           TextValidator.patternValidator(/[A-Z]/, { hasCapitalCase: true }),
           TextValidator.patternValidator(/[a-z]/, { hasSmallCase: true }),
-          TextValidator.patternValidator(/[!@$%^&*()_+-={};':"|,.<>?]/, { hasSpecialCharchters: true })
+          TextValidator.patternValidator(/[!@$%^&*(+)_-{=};':|",.<>?]/, { hasSpecialCharchters: true })
         ]),
-
         ],
+
         confirmPassword: [null, Validators.compose([Validators.required])]
+
       });
 
   }
@@ -60,7 +60,5 @@ export class LoginFormComponent implements OnInit {
   get password() {
     return this.formSignup.get(`password`);
   }
-
-  
 
 }

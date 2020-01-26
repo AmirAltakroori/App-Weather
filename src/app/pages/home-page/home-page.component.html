@@ -1,14 +1,19 @@
 <div class="container">
     <div class="content">
+
+        <!-- Search cities icon -->
         <div> <img (click)="showCitiesSearch()" class="search-icon" src={{imgSearch}} alt="Search Icon"> </div>
 
+        <!-- Start of weathers Details container -->
         <div class="weather-details">
 
+            <!-- Today weather details -->
             <div class="today-weather">
                 <div (click)="showWeatherDetails(weather?.id)" class="get-more-details">?</div>
                 <today [dayWeather]="weather"></today>
             </div>
 
+            <!-- List of next days forecast details -->
             <div class="next-days-forecaste">
                 <ul *ngFor="let forecast of nextDaysWeather">
                     <div (click)="showWeatherDetails(forecast?.id)" class="get-more-details">?</div>
@@ -17,7 +22,9 @@
             </div>
 
         </div>
+        <!-- End of weathers Details container -->
 
+        <!-- List of nearest cities -->
         <div class="cities-list">
             <list-cities [citiesList]="citiesList" (listIsHidden)="closeCitiesList($event)" (returnedCityName)="changeCurrentCity($event)" *ngIf="showCitiesList"></list-cities>
         </div>

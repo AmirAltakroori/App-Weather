@@ -5,4 +5,5 @@ export const environment = {
   searchIcon: `https://images-na.ssl-images-amazon.com/images/I/61LpB8oOV4L.png`,
   closeIcon: `https://cdn1.iconfinder.com/data/icons/toolbar-signs/512/cancel-512.png`,
   weatherIconUrl: `http://openweathermap.org/img/wn/`,
+  nextDaysForecastHomePage: 4,
 };

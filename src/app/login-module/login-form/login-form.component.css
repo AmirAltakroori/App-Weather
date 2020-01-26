@@ -1,15 +1,47 @@
-form,
-span {
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container form {
+  margin-top: auto;
+  background-color: cornflowerblue;
+  padding: 15%;
+}
+
+.container form,
+.container span {
   display: -ms-grid;
   display: grid;
 }
 
-.invalid-input {
+.container form *,
+.container span * {
+  margin: 3%;
+}
+
+.container input,
+.container button {
+  width: 250px;
+}
+
+.container input {
+  height: 55px;
+}
+
+.container .invalid-input {
   color: brown;
   background-color: tomato;
 }
 
-.valid-input {
+.container .valid-input {
   color: green;
   background-color: chartreuse;
 }

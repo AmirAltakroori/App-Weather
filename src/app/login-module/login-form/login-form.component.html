@@ -1,50 +1,83 @@
 <div class="container">
+
+    <!-- Login form -->
     <form [formGroup]="formSignup" (submit)="submit()">
 
-        <input type="email" formControlName="email" id="email" placeholder="Enter your email" />
-        <span *ngIf="email.invalid">
-        <label *ngIf="email.hasError('email')" [ngClass]="email.hasError('email')?'invalid-input':'' ">
-            Enter a valid email address
-        </label>
-        <label *ngIf="email.hasError('required') && email.touched" [ngClass]="email.hasError('required')?'invalid-input':'' ">
-            Email is required
-        </label>
-        <label *ngIf="email.hasError('maxlength')" [ngClass]="email.hasError('maxLength')?'invalid-input':'' ">
-            Max length of Email is 80
-        </label>
-        <label *ngIf="email.hasError('fromUntisEmail')" [ngClass]="email.hasError('fromUntisEmail')?'invalid-input':'' ">
-            Email should end with ...@pseu.edu
-        </label>
-    </span>
+        <!-- Start email container -->
+        <div class="email-container">
 
-        <input type="password" formControlName="password" placeholder="password" required>
-        <span *ngIf="password.touched">
-    <label [ngClass]="password.hasError('required') ? 'invalid-input' : 'valid-input'">
-        password is required
-    </label>
+            <!-- Email input box -->
+            <input type="email" formControlName="email" id="email" placeholder="Enter your email" />
 
-    <label [ngClass]="!password.hasError('required') &&  (!password.hasError('minlength') && !password.hasError('maxlength'))? 'valid-input' : 'invalid-input' ">
-        password must has at least 6 characters and at most 80 characters
-    </label>
+            <!-- Start message email's validation -->
+            <span *ngIf="email.dirty">
 
-    <label [ngClass]="password.hasError('required') || password.hasError('hasNumber')? 'invalid-input' : 'valid-input'">
-        password must has at least 1 number degit
-    </label>
+                <label *ngIf="email.hasError('required') && email.touched"
+                    [ngClass]="email.hasError('required')?'invalid-input':'' ">
+                    Email is required
+                </label>
 
-    <label [ngClass]="password.hasError('required') || password.hasError('hasCapitalCase')? 'invalid-input' : 'valid-input'">
-        password must has at least 1 CAPITAL case character
-    </label>
+                <label *ngIf="email.hasError('maxlength')" [ngClass]="email.hasError('maxLength')?'invalid-input':'' ">
+                    Max length of Email is 80
+                </label>
 
-    <label [ngClass]="password.hasError('required') || password.hasError('hasSmallCase')? 'invalid-input' : 'valid-input'">
-        password must has at least 1 small case character
-    </label>
+                <label *ngIf="email.hasError('fromUntisEmail')"
+                    [ngClass]="email.hasError('fromUntisEmail')?'invalid-input':'' ">
+                    Email should end with ...@pseu.edu
+                </label>
 
-    <label [ngClass]="password.hasError('required') || password.hasError('hasSpecialCharchters')? 'invalid-input' : 'valid-input'">
-        password must has at least 1 special character
-    </label>
+            </span>
+            <!-- End message email's validation -->
 
-</span>
-        <!-- -->
-        <button type="submit" [disabled]="(email.invalid && password.invalid)">Submit</button>
+        </div>
+        <!-- End email container -->
+
+        <!-- Start password container -->
+        <div class="password-container">
+
+            <!-- Password input box -->
+            <input type="password" formControlName="password" placeholder="password" required>
+
+            <!-- Start message password's validation -->
+            <span *ngIf="password.dirty">
+
+                <label [ngClass]="password.hasError('required') ? 'invalid-input' : 'valid-input'">
+                    password is required
+                </label>
+
+                <label
+                    [ngClass]="!password.hasError('required') &&  (!password.hasError('minlength') && !password.hasError('maxlength'))? 'valid-input' : 'invalid-input' ">
+                    password must has at least 6 characters and at most 80 characters
+                </label>
+
+                <label
+                    [ngClass]="password.hasError('required') || password.hasError('hasNumber')? 'invalid-input' : 'valid-input'">
+                    password must has at least 1 number degit
+                </label>
+
+                <label
+                    [ngClass]="password.hasError('required') || password.hasError('hasCapitalCase')? 'invalid-input' : 'valid-input'">
+                    password must has at least 1 CAPITAL case character
+                </label>
+
+                <label
+                    [ngClass]="password.hasError('required') || password.hasError('hasSmallCase')? 'invalid-input' : 'valid-input'">
+                    password must has at least 1 small case character
+                </label>
+
+                <label
+                    [ngClass]="password.hasError('required') || password.hasError('hasSpecialCharchters')? 'invalid-input' : 'valid-input'">
+                    password must has at least 1 special character
+                </label>
+                
+            </span>
+            <!-- End message password's validation -->
+
+        </div>
+        <!-- End password container -->
+
+        <!-- Submit button -->
+        <button type="submit" id="submit-button" name="submit-button" [disabled]="(email.invalid && password.invalid)">Submit</button>
     </form>
+
 </div>

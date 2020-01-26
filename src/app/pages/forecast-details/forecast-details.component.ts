@@ -1,7 +1,4 @@
 import { StorageService } from './../../services/storage.service';
-import { ClimateConvarterService } from './../../services/climate-convarter.service';
-import { environment } from 'src/environments/environment.prod';
-import { WeatherDataService } from 'src/app/services/weather-data.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { WeatherComponent } from 'src/app/components/weather/weather.component';
@@ -28,6 +25,8 @@ export class ForecastDetailsComponent implements OnInit {
   getDetailsForecastById(id) {
 
     try {
+
+      // find weather by id from saved data list from home page
       let forecasteList = this.storage.weathersData;
       forecasteList.forEach(forecast => {
         if (forecast.id == id) {
