@@ -8,9 +8,13 @@ Weather app contains two pages:
 
 ### App feature
 [x] Get weather by coordinates 
+
 [x] Find nearest weather depands on coordenates 
+
 [x] Login page 
+
 [ ] Scroll animations
+
 [ ] Design pages
  
  ### Built with
