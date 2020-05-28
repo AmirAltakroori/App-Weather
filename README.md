@@ -24,7 +24,7 @@ Weather app contains two pages:
  ### Versioning
  It is a first version and it is still under test
  
- ### OS
+ ### Enviroments 
  Compatible with all of these web browsers:
  * Google Chrome
  * Firefox
