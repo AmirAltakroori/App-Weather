@@ -1,41 +1,50 @@
 # Weather App
-App that provide a weather information
+> App provides weather information according to a specific location. By default, the app provides weather information for user location. Also, it provides presenting the weather for neighbor cities.
 
-### App description  
-Weather app contains two pages:
-*First page* provides user an information about current weather depands on coordinations. Also it provides next four days forecast.
-*Second page* provides user more informatation about a user silected weahter
+## Tabel of contents
+* [General Information](#general-information)
+* [Technologies](#technologies)
+* [Features](#features)
+* [Built with](#built-with)
+* [Versioning](#versioning)
+* [Enviroments](#enviroments)
+* [Author](#author)
+* [License](#license)
 
-### App feature
-[x] Get weather by coordinates 
+## General Information
+This project is implemented for practicing purposes. The main motivations for this project are practicing on the Angular framework and using API in real applications.
+It provides the city name, current temperature, maximum temperature, minimum temperature, pressure, wind speed, and stable icon for the weather.
 
-[x] Find nearest weather depands on coordenates 
+## Technologies
+* Angular 6
+* SCSS
 
-[x] Login page 
+## Features
+* Get weather by coordinates 
+* Find nearest weather depends on coordenates 
+* Login page
 
-[ ] Scroll animations
+To-do list:
+* Scroll neighbor cities animations
+* Design pages
 
-[ ] Design pages
  
- ### Built with
+## Built with
  * Angular: website framwork
  * Scss: for designs and styles
 
- ### Versioning
+ ## Versioning
  It is a first version and it is still under test
  
- ### Enviroments 
+ ## Enviroments 
  Compatible with all of these web browsers:
  * Google Chrome
  * Firefox
  * Opera
  * Microsoft Edge
   
- ### Author
+## Author
 * [Amir Altakroori](ameertakrouri99@gmail.com" "ameertakrouri99@gmail.com") - software engineer - PSEU 
 
-### License
+## License
 No License
- 
-
-
