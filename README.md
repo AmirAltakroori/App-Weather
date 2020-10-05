@@ -44,7 +44,7 @@ To-do list:
  * Microsoft Edge
   
 ## Author
-* [Amir Altakroori](ameertakrouri99@gmail.com" "ameertakrouri99@gmail.com") - software engineer - PSEU 
+* [Amir Altakroori](mailto:ameertakrouri99@gmail.com) - software engineer - PSEU 
 
 ## License
 No License
